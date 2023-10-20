@@ -1,0 +1,75 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Fake E Commerce Store",
+    "description": "My Fake E Commerce Store",
+    "license": {
+      "name": "Mitchell Nilsson",
+      "url": ""
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "E Commerce Site",
+      "description": "A site that let's you pay REAL money for fake things you'll never receive!"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get products",
+        "parameters": [
+          {
+            "name": "string",
+            "in": "query",
+            "description": "A search word",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service returns a JSON of products filtered by a search string, or all products if no search string is specified"
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Get all categories",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "This service returns a JSON of all categories"
+          }
+        }
+      }
+    },
+    "/products/{category}": {
+      "get": {
+        "tags": ["Categories", "Products"],
+        "summary": "Get all products of a category",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "description": "Category parameter",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service returns a JSON of all products related to the specified category"
+          }
+        }
+      }
+    }
+  }
+}
